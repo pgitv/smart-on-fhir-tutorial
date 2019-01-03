@@ -31,9 +31,13 @@
         var condition = smart.patient.api.fetchAll({
           type: 'Condition'
         }); //-----Added
-
         $.when(condition).done(function(condition) {
           console.log('Condition is', condition); //-----Added
+        });
+
+        var possibleAllFetch = smart.patient.api.fetchAll(); //-----Added
+        $.when(possibleAllFetch).done(function(possibleAllFetch) {
+          console.log('All Fetch is', possibleAllFetch); //-----Added
         });
 
         $.when(pt, obv).fail(onError);
