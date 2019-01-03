@@ -35,9 +35,32 @@
           console.log('Condition is', condition); //-----Added
         });
 
-        var possibleAllFetch = smart.patient.api.fetchAll(); //-----Added
-        $.when(possibleAllFetch).done(function(possibleAllFetch) {
-          console.log('All Fetch is', possibleAllFetch); //-----Added
+        var procedure = smart.patient.api.fetchAll({
+          type: 'Procedure'
+        }); //-----Added
+        $.when(procedure).done(function(condition) {
+          console.log('Procedure is', procedure); //-----Added
+        });
+
+        var imaging = smart.patient.api.fetchAll({
+          type: 'ImagingStudy'
+        }); //-----Added
+        $.when(imaging).done(function(imaging) {
+          console.log('Imaging studies are ', imaging); //-----Added
+        });
+
+        var medRequest = smart.patient.api.fetchAll({
+          type: 'MedicationRequest'
+        }); //-----Added
+        $.when(medRequest).done(function(medRequest) {
+          console.log('Medication Requests are ', medRequest); //-----Added
+        });
+
+        var carePlan = smart.patient.api.fetchAll({
+          type: 'CarePlan'
+        }); //-----Added
+        $.when(carePlan).done(function(carePlan) {
+          console.log('Care Plan is ', carePlan); //-----Added
         });
 
         $.when(pt, obv).fail(onError);
