@@ -12,11 +12,6 @@
         var patient = smart.patient;
         var pt = patient.read();
 
-        var condition = async function() {
-          smart.patient.api.fetchAll({ type: 'Condition' });
-        }; //-----Added
-        console.log('Condition is', condition); //-----Added
-
         var obv = smart.patient.api.fetchAll({
           type: 'Observation',
           query: {
@@ -33,11 +28,20 @@
           }
         });
 
-        console.log('Obv is ', obv); //-----Added
+        var condition = smart.patient.api.fetchAll({
+          type: 'Condition'
+        }); //-----Added
+
+        $.when(condition).done(function(condition) {
+          console.log('Condition is', condition); //-----Added
+        });
 
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
+          console.log('byCodes is ', byCodes); //-----Added
+          console.log('Obv is ', obv); //-----Added
+
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
