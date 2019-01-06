@@ -38,7 +38,7 @@
         var procedure = smart.patient.api.fetchAll({
           type: 'Procedure'
         }); //-----Added
-        $.when(procedure).done(function(condition) {
+        $.when(procedure).done(function(procedure) {
           console.log('Procedure is', procedure); //-----Added
         });
 
